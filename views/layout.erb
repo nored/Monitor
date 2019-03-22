@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uptime Monitor</title>
+    
+    <!-- Meta -->
+    <meta charset='UTF-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+    <link rel="stylesheet" href="assets/app.css">
+    
+  </head>
+  
+  <body >
+    <% flash.keys.each do |type| %>
+      <% if type.to_s == "error" %>
+        <div data-alert class="alert alert-danger" role="alert">
+          <%= flash[type] %>
+        </div>
+      <% elsif type.to_s == "success" %>
+        <div data-alert class="alert alert-success" role="alert">
+          <%= flash[type] %>
+        </div>
+      <% end %>
+    <% end %>
+      <%= yield %>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

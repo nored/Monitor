@@ -1,0 +1,48 @@
+<div class="container backend">
+    <a href="/sign_out" class="btn btn-danger mb-2 float-right logout" role="button">Logout</a>
+    <h1>Monitor</h1>
+    <hr>
+    <div class="backend-div" id="div1">
+        <h2>Average Load</h2>
+        <div id="my_dataviz1"></div>
+    </div>
+    <div class="backend-div" id="div2">
+        <h2>Average Temperature</h2>
+        <div id="my_dataviz2"></div>
+    </div>
+    <div class="backend-div" id="div3">
+        <h2>Offline Devices</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+            </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: offline -->
+                <tr>
+                    <td data-bind="text: offline"></td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+    <div class="backend-div" id="div4">
+        <h2>Online Devices</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+            </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: online -->
+                <tr>
+                    <td data-bind="text: online"></td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
