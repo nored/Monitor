@@ -1,0 +1,53 @@
+<div class="container backend">
+    <a href="/sign_out" class="btn btn-danger mb-2 float-right logout" role="button">Logout</a>
+    <a href="/backend" class="btn btn-primary mb-2 float-right logout back" role="button">Back</a>
+
+    <h1>Detail: <%= @name %></h1>
+    <hr>
+    <div class="deail-div" id="div3">
+        <h2>Device Status</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> Device-Uptime: </td>
+                    <td> <%= @session["uptime"] %> </td>
+                </tr>
+                <tr>
+                    <td> Device Temperature: </td>
+                    <td> <%= @session["temp"] %> </td>
+                </tr>
+                <tr>
+                    <td> Device Load: </td>
+                    <td> <%= @session["load"] %> </td>
+                </tr>
+                <tr>
+                    <td> Device IP: </td>
+                    <td> <%= @session["ip"] %> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="deail-div" id="div4">
+    <% if @status == 'success' %>
+        <h2>Location: <%= @resp["city"] + ", " + @resp["countryCode"] %></h2>
+        <iframe 
+            width="100%"
+            height="450"
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0" 
+            src="https://maps.google.com/maps?q=<%= @resp["lat"] %>,<%= @resp["lon"] %>&hl=es;z=14&amp;output=embed"
+            >
+        </iframe>
+    
+    <% end %>
+    </div>
+</div>
+

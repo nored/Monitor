@@ -18,6 +18,7 @@ require 'erb'
 require 'csv'
 require 'builder'
 require 'bcrypt'
+require 'httparty'
 
 class App < Sinatra::Base
     helpers Sinatra::Cookies
@@ -344,6 +345,28 @@ class App < Sinatra::Base
     get "/getdate" do
         content_type 'application/json'
         {:date => DateTime.now}.to_json
+    end
+
+    get "/:name" do |name|
+        if session[:passwordhash] == ENV['PASSWORDHASH']
+            store = YAML::Store.new 'devices.yml'
+            device = getDeviceFromDB(name)
+            if !(device.nil?)
+                @name = name
+                @session = device["sessions"].values.last
+                url = "http://ip-api.com/json/#{@session["ip"]}"
+                puts url
+                @resp = HTTParty.get(url)
+                @status = @resp["status"]
+
+                erb :detail
+            else
+                redirect not_found
+            end
+          else
+            flash[:error] = "E-Mail-Adresse oder Password Falsch."
+            redirect "/login"
+          end
     end
 
 end

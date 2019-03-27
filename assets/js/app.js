@@ -131,7 +131,7 @@ function MonitorViewModel() {
     t.online = ko.observableArray([]);
     t.avgload = ko.observable();
     t.avgtemp = ko.observable();
-    
+
     t.update = function() {
    
     $.getJSON("/offline", function(raw) {

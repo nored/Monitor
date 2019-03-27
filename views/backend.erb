@@ -21,7 +21,7 @@
             <tbody>
                 <!-- ko foreach: offline -->
                 <tr>
-                    <td data-bind="text: offline"></td>
+                    <td> <a data-bind="attr: { href: offline}"><p data-bind="text: offline"></p></td>
                 </tr>
                 <!-- /ko -->
             </tbody>
@@ -38,11 +38,13 @@
             <tbody>
                 <!-- ko foreach: online -->
                 <tr>
-                    <td data-bind="text: online"></td>
+                    <td> <a data-bind="attr: { href: online}"><p data-bind="text: online"></p></td>
                 </tr>
                 <!-- /ko -->
             </tbody>
         </table>
     </div>
 </div>
+
+
 
